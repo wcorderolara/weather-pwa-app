@@ -1,23 +1,25 @@
-<mat-card class="example-card">
+<mat-form-field>
+  <input matInput placeholder="Enter a City" #cityCtrl (keydown.enter)="search(cityCtrl.value)">
+  <mat-icon matSuffix (click)="search(cityCtrl.value)">search</mat-icon>
+</mat-form-field>
+
+<mat-card *ngIf="weather">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>{{weather.name}}, {{weather.sys.country}}</mat-card-title>
+    <mat-card-subtitle>
+      {{weather.weather[0].main}}, {{weather.weather[0].description}}
+    </mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-    alt="Photo of a Shiba Inu"
-  />
+
+  <img mat-card-image src="https://openweathermap.org/img/wn/{{weather.weather[0].icon}}@2x.png"
+     [alt]="weather.weather[0].main"/>
+
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz
-      breeds of dog from Japan. A small, agile dog that copes very well with
-      mountainous terrain, the Shiba Inu was originally bred for hunting.
-    </p>
+    <h1>{{weather.main.temp | number:'1.0-0'}} &#8451;</h1>
+    <p>Presi&oacute;n Atmosf&eacute;rica: {{weather.main.pressure}} hPa</p>
+    <p>Humedad: {{weather.main.humidity}} %</p>
+    <p>Velocidad del Viento: {{weather.wind.speed}} m/s</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
+
+
 </mat-card>

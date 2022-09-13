@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.openweathermap.org/data/3.0/onecall',
+  apiUrl: 'https://api.openweathermap.org/data/2.5/',
   apiKey: 'ac561eebc982536d570cdce8a14b8ce8'
 };
 
